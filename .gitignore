@@ -34,3 +34,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+chrome-extension/*.zip
+chrome-extension/screenshots/_compose.html
