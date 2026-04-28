@@ -59,6 +59,14 @@ export default function HomePage() {
               Which SAQ do I need? →
             </Link>
             <a
+              href="https://curtnash.gumroad.com/l/kjxsy"
+              target="_blank"
+              rel="noopener"
+              className="rounded-full border-2 border-teal px-6 py-3 font-semibold text-teal-light transition hover:bg-teal/10"
+            >
+              Download free PDF
+            </a>
+            <a
               href="https://github.com/paytia-comply/paytia-saq-checklist"
               target="_blank"
               rel="noopener"

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Checklist } from "@/components/Checklist";
+import { PdfCallout } from "@/components/PdfCallout";
 import { saqAEp } from "@/data/saq-a-ep";
 
 export const metadata: Metadata = {
@@ -29,6 +30,8 @@ export default function SaqAEpPage() {
           web infrastructure has to be hardened and monitored.
         </p>
       </header>
+
+      <PdfCallout />
 
       <div className="mt-12">
         <Checklist sections={saqAEp} />

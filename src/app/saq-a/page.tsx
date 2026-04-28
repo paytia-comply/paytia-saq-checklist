@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Checklist } from "@/components/Checklist";
+import { PdfCallout } from "@/components/PdfCallout";
 import { saqA } from "@/data/saq-a";
 
 export const metadata: Metadata = {
@@ -39,6 +40,8 @@ export default function SaqAPage() {
           is what gets you back to SAQ A. Without it, you&apos;re on SAQ D.
         </div>
       </header>
+
+      <PdfCallout />
 
       <div className="mt-12">
         <Checklist sections={saqA} />

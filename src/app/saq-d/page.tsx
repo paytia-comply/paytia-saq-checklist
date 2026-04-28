@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Checklist } from "@/components/Checklist";
+import { PdfCallout } from "@/components/PdfCallout";
 import { saqD } from "@/data/saq-d";
 
 export const metadata: Metadata = {
@@ -44,6 +45,8 @@ export default function SaqDPage() {
           fewer audits, less risk.
         </div>
       </header>
+
+      <PdfCallout />
 
       <div className="mt-12">
         <Checklist sections={saqD} />

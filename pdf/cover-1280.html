@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { width: 1280px; height: 720px; }
+  body {
+    width: 1280px;
+    height: 720px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a1628 0%, #111d33 50%, #1a2942 100%);
+    color: #fff;
+    padding: 70px 90px;
+    position: relative;
+    font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  }
+  body::after {
+    content: "";
+    position: absolute;
+    top: -160px;
+    right: -160px;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  body::before {
+    content: "";
+    position: absolute;
+    bottom: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    font-size: 14px;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+  }
+  h1 {
+    margin-top: 18px;
+    font-size: 96px;
+    line-height: 0.98;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    position: relative;
+    z-index: 2;
+  }
+  h1 .accent {
+    color: #22d3ee;
+  }
+  .sub {
+    margin-top: 30px;
+    font-size: 22px;
+    line-height: 1.5;
+    color: #cbd5e1;
+    max-width: 760px;
+    position: relative;
+    z-index: 2;
+  }
+  .badges {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+  }
+  .badge {
+    padding: 10px 22px;
+    border: 1.5px solid #06b6d4;
+    border-radius: 999px;
+    font-size: 13px;
+    color: #22d3ee;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .badge.solid {
+    background: #06b6d4;
+    color: #0a1628;
+    border-color: #06b6d4;
+  }
+  .footer {
+    position: absolute;
+    bottom: 50px;
+    left: 90px;
+    right: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 2;
+  }
+  .footer .left {
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .footer .left strong { color: #fff; font-weight: 700; }
+  .footer .right {
+    font-size: 13px;
+    color: #64748b;
+    text-align: right;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="eyebrow">Free Edition · 2026</div>
+<h1>The PCI SAQ<br/><span class="accent">Workbook</span></h1>
+<p class="sub">Plain-English checklists for SAQ A, A-EP, B, and D — plus an 8-step decision guide and a 15-term PCI glossary.</p>
+<div class="badges">
+  <div class="badge solid">Free Download</div>
+  <div class="badge">25 pages · MIT licensed</div>
+</div>
+<div class="footer">
+  <div class="left">Maintained by <strong>Paytia</strong><br/>PCI-compliant phone payments</div>
+  <div class="right">paytia.com/phone-payments</div>
+</div>
+</body>
+</html>

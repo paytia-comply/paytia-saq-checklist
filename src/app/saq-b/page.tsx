@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Checklist } from "@/components/Checklist";
+import { PdfCallout } from "@/components/PdfCallout";
 import { saqB } from "@/data/saq-b";
 
 export const metadata: Metadata = {
@@ -28,6 +29,8 @@ export default function SaqBPage() {
           inspecting devices for tampering.
         </p>
       </header>
+
+      <PdfCallout />
 
       <div className="mt-12">
         <Checklist sections={saqB} />

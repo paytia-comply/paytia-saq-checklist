@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { width: 600px; height: 600px; }
+  body {
+    width: 600px;
+    height: 600px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #0a1628 0%, #111d33 50%, #1a2942 100%);
+    color: #fff;
+    padding: 60px 50px;
+    position: relative;
+    font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  }
+  body::after {
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    font-size: 11px;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+  }
+  h1 {
+    margin-top: 14px;
+    font-size: 56px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    position: relative;
+    z-index: 2;
+  }
+  h1 .accent {
+    color: #22d3ee;
+  }
+  .sub {
+    margin-top: 22px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #cbd5e1;
+    position: relative;
+    z-index: 2;
+  }
+  .badge {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 8px 16px;
+    background: #06b6d4;
+    color: #0a1628;
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+  }
+  .footer {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    right: 50px;
+    font-size: 11px;
+    color: #94a3b8;
+    z-index: 2;
+  }
+  .footer strong { color: #fff; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="eyebrow">Free · 25 pages</div>
+<h1>The PCI SAQ<br/><span class="accent">Workbook</span></h1>
+<p class="sub">Plain-English checklists for SAQ A, A-EP, B, and D.</p>
+<div class="badge">Free Download</div>
+<div class="footer">By <strong>Paytia</strong> · paytia.com/phone-payments</div>
+</body>
+</html>
