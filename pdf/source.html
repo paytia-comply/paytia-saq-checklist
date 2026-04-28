@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>The PCI SAQ Workbook — Free Edition</title>
+<style>
+  @page {
+    size: A4;
+    margin: 22mm 18mm 22mm 18mm;
+    @bottom-left {
+      content: "Paytia · paytia.com/phone-payments";
+      font-family: 'Helvetica', sans-serif;
+      font-size: 8.5pt;
+      color: #64748b;
+    }
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font-family: 'Helvetica', sans-serif;
+      font-size: 8.5pt;
+      color: #64748b;
+    }
+  }
+  @page :first {
+    margin: 0;
+    @bottom-left { content: ""; }
+    @bottom-right { content: ""; }
+  }
+  @page section {
+    @top-right {
+      content: string(section-title);
+      font-family: 'Helvetica', sans-serif;
+      font-size: 8.5pt;
+      color: #64748b;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+    color: #0f172a;
+    font-size: 10.5pt;
+    line-height: 1.55;
+  }
+
+  /* COVER */
+  .cover {
+    page: cover;
+    width: 210mm;
+    height: 297mm;
+    background: linear-gradient(160deg, #0a1628 0%, #111d33 50%, #1a2942 100%);
+    color: #fff;
+    padding: 30mm 24mm;
+    page-break-after: always;
+    position: relative;
+  }
+  .cover .eyebrow {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #22d3ee;
+    font-weight: 700;
+  }
+  .cover h1 {
+    margin: 8mm 0 0 0;
+    font-size: 38pt;
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .cover h1 .accent {
+    color: #22d3ee;
+  }
+  .cover .sub {
+    margin-top: 10mm;
+    font-size: 13pt;
+    line-height: 1.5;
+    color: #cbd5e1;
+    max-width: 130mm;
+  }
+  .cover .meta {
+    position: absolute;
+    bottom: 24mm;
+    left: 24mm;
+    right: 24mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .cover .meta .left {
+    font-size: 10pt;
+    color: #94a3b8;
+  }
+  .cover .meta .left strong {
+    color: #fff;
+    font-weight: 700;
+  }
+  .cover .meta .right {
+    font-size: 9pt;
+    color: #64748b;
+    text-align: right;
+  }
+  .cover .badge {
+    display: inline-block;
+    margin-top: 6mm;
+    padding: 3mm 5mm;
+    border: 1px solid #06b6d4;
+    border-radius: 999px;
+    font-size: 9pt;
+    color: #22d3ee;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* SECTION COVERS */
+  .section-cover {
+    page-break-before: always;
+    page-break-after: always;
+    padding: 60mm 0 0 0;
+    string-set: section-title attr(data-section);
+  }
+  .section-cover .label {
+    font-size: 9pt;
+    color: #06b6d4;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+  }
+  .section-cover h2 {
+    font-size: 32pt;
+    margin: 6mm 0 8mm 0;
+    color: #0a1628;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .section-cover .lede {
+    font-size: 12pt;
+    color: #334155;
+    max-width: 145mm;
+    line-height: 1.55;
+  }
+
+  h2.page-h2 {
+    font-size: 22pt;
+    color: #0a1628;
+    margin: 0 0 6mm 0;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    string-set: section-title content();
+  }
+  h3 {
+    font-size: 13pt;
+    color: #0a1628;
+    margin: 8mm 0 3mm 0;
+    font-weight: 700;
+  }
+  p { margin: 0 0 3mm 0; }
+
+  .toc {
+    page-break-after: always;
+  }
+  .toc h2 {
+    font-size: 22pt;
+    color: #0a1628;
+    margin: 0 0 6mm 0;
+    font-weight: 800;
+  }
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 11pt;
+  }
+  .toc li {
+    padding: 2mm 0;
+    border-bottom: 1px dotted #cbd5e1;
+    display: flex;
+    justify-content: space-between;
+  }
+  .toc li .name { color: #0a1628; font-weight: 600; }
+  .toc li .pg { color: #64748b; font-size: 10pt; }
+
+  .intro p { font-size: 11pt; }
+
+  /* DECISION STEPS */
+  .decision-step {
+    border-left: 4px solid #06b6d4;
+    background: #f8fafc;
+    padding: 4mm 5mm;
+    margin: 0 0 4mm 0;
+    page-break-inside: avoid;
+  }
+  .decision-step .num {
+    color: #0e7490;
+    font-weight: 700;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .decision-step .q {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #0a1628;
+    margin: 1mm 0 2mm 0;
+  }
+  .decision-step .ya, .decision-step .na {
+    margin: 1mm 0;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+  .decision-step .ya strong { color: #059669; }
+  .decision-step .na strong { color: #d97706; }
+
+  /* CHECKLIST */
+  .group-title {
+    font-size: 14pt;
+    color: #0e7490;
+    font-weight: 700;
+    margin: 8mm 0 3mm 0;
+    padding-bottom: 1.5mm;
+    border-bottom: 2px solid #06b6d4;
+  }
+  .control {
+    display: flex;
+    gap: 4mm;
+    padding: 3mm 0;
+    border-bottom: 1px solid #e2e8f0;
+    page-break-inside: avoid;
+  }
+  .control:last-child { border-bottom: none; }
+  .checkbox {
+    width: 5mm;
+    height: 5mm;
+    border: 1.5px solid #94a3b8;
+    border-radius: 1mm;
+    flex-shrink: 0;
+    margin-top: 0.5mm;
+  }
+  .control .body { flex: 1; }
+  .control .id-row {
+    display: flex;
+    align-items: baseline;
+    gap: 3mm;
+  }
+  .control .ctl-id {
+    font-family: 'Menlo', monospace;
+    font-size: 9pt;
+    font-weight: 700;
+    color: #0e7490;
+  }
+  .control .req {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #0a1628;
+  }
+  .control .plain {
+    margin-top: 1.5mm;
+    font-size: 10pt;
+    color: #334155;
+    line-height: 1.55;
+  }
+  .control .ev {
+    margin-top: 1.5mm;
+    font-size: 9pt;
+    color: #64748b;
+    font-style: italic;
+  }
+  .control .ev strong {
+    font-style: normal;
+    color: #475569;
+  }
+
+  /* GLOSSARY */
+  .term {
+    margin-bottom: 5mm;
+    page-break-inside: avoid;
+  }
+  .term .name {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #0a1628;
+  }
+  .term .aka {
+    font-size: 10pt;
+    color: #64748b;
+    margin-left: 2mm;
+  }
+  .term .def {
+    margin-top: 1mm;
+    font-size: 10pt;
+    color: #334155;
+  }
+
+  /* CALLOUT */
+  .callout {
+    border-left: 4px solid #d97706;
+    background: #fef3c7;
+    padding: 4mm 5mm;
+    margin: 4mm 0;
+    page-break-inside: avoid;
+  }
+  .callout-teal {
+    border-left-color: #06b6d4;
+    background: #ecfeff;
+  }
+  .callout strong { color: #0a1628; }
+
+  /* CTA / About */
+  .cta-block {
+    page-break-before: always;
+    background: linear-gradient(160deg, #0a1628, #111d33);
+    color: #fff;
+    padding: 30mm 18mm;
+    margin: 0 -18mm -22mm -18mm;
+    width: calc(100% + 36mm);
+    min-height: 220mm;
+  }
+  .cta-block h2 {
+    font-size: 28pt;
+    color: #fff;
+    margin: 0 0 6mm 0;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .cta-block h2 .accent {
+    color: #22d3ee;
+  }
+  .cta-block p {
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #cbd5e1;
+    max-width: 150mm;
+  }
+  .cta-block .url-pill {
+    display: inline-block;
+    margin-top: 6mm;
+    padding: 4mm 8mm;
+    background: #06b6d4;
+    color: #0a1628;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 11pt;
+  }
+  .cta-block .secondary {
+    display: block;
+    margin-top: 4mm;
+    font-size: 10pt;
+    color: #94a3b8;
+  }
+
+  a { color: #0e7490; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="eyebrow">The Free Edition · 2026</div>
+  <h1>The PCI SAQ<br/><span class="accent">Workbook</span></h1>
+  <p class="sub">
+    Plain-English checklists for SAQ A, A-EP, B, and D — plus an 8-step
+    decision guide and a 15-term PCI glossary. Built for the people
+    actually trying to get compliant, not the people writing the standards.
+  </p>
+  <div class="badge">Free · MIT Licensed</div>
+  <div class="meta">
+    <div class="left">
+      Maintained by <strong>Paytia</strong><br/>
+      PCI-compliant phone payments
+    </div>
+    <div class="right">
+      paytia.com/phone-payments<br/>
+      Live · GitHub Pages
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<section class="toc" style="padding-top: 8mm;">
+  <h2>Contents</h2>
+  <ol>
+    <li><span class="name">How to use this workbook</span><span class="pg">3</span></li>
+    <li><span class="name">Which SAQ do I need? — 8-step guide</span><span class="pg">5</span></li>
+    <li><span class="name">SAQ A — Card-not-present, fully outsourced</span><span class="pg">9</span></li>
+    <li><span class="name">SAQ A-EP — E-commerce with iframe/redirect</span><span class="pg">13</span></li>
+    <li><span class="name">SAQ B — Imprint and dial-out terminals</span><span class="pg">19</span></li>
+    <li><span class="name">SAQ D — Comprehensive (high-impact subset)</span><span class="pg">23</span></li>
+    <li><span class="name">PCI glossary — 15 terms in plain English</span><span class="pg">31</span></li>
+    <li><span class="name">About Paytia</span><span class="pg">35</span></li>
+  </ol>
+</section>
+
+<!-- INTRO -->
+<section class="intro" style="padding-top: 6mm;">
+  <h2 class="page-h2">How to use this workbook</h2>
+  <p>
+    The official PCI DSS Self-Assessment Questionnaires are written for
+    QSAs and security professionals. If you're a finance director or
+    operations manager who's suddenly responsible for PCI, they're
+    rough going.
+  </p>
+  <p>
+    This workbook translates the highest-impact controls from SAQ A,
+    A-EP, B, and D into language a busy ops manager can actually use,
+    with the evidence you'll need for each one.
+  </p>
+  <h3>Three things to know first</h3>
+  <p>
+    <strong>1. This is a starting point, not an audit.</strong> Use it
+    to scope your work, build a checklist for your team, and prepare for
+    a conversation with a Qualified Security Assessor. Your QSA still
+    has the final word on which SAQ applies and whether you've met it.
+  </p>
+  <p>
+    <strong>2. Start with "Which SAQ?".</strong> Most merchants pick the
+    wrong SAQ on their first attempt — usually because they assume
+    "outsourced means SAQ A" without checking the conditions. Work
+    through the 8-step decision guide first.
+  </p>
+  <p>
+    <strong>3. Phone payments are the trap.</strong> If your business
+    takes card payments over the phone, the agent typing the card
+    number into a CRM during the call brings the entire call recording,
+    the agent's PC, the phone system, and most of the office network
+    into PCI scope. That single behaviour can move you from SAQ A to
+    SAQ D — from 16 controls to 330+.
+  </p>
+  <div class="callout callout-teal">
+    <p><strong>How phone-payment descope works.</strong> A descope
+    solution like Paytia intercepts card details before they reach the
+    agent or the call recording. The customer types the card number on
+    their phone keypad; DTMF tones are captured by a PCI-compliant
+    payment system and replaced with masked tones in the recording.
+    Agents never hear or see the card data — and the call goes back to
+    SAQ A scope.</p>
+    <p style="margin-top: 3mm;"><strong>Read more:</strong>
+    paytia.com/phone-payments</p>
+  </div>
+  <h3>How the checklists work</h3>
+  <p>
+    Each SAQ section lists the high-impact controls grouped by topic.
+    For each control you'll see: the official PCI DSS reference number,
+    a plain-English requirement, what it actually means in practice,
+    and (where useful) what evidence you'll need on file.
+  </p>
+  <p>
+    Print this PDF, tick the boxes as you go, and use it as the working
+    document for your assessment. The full interactive version with
+    progress tracking is at
+    <a>paytia-comply.github.io/paytia-saq-checklist</a>.
+  </p>
+</section>
+
+<!-- WHICH SAQ -->
+<section class="section-cover" data-section="Which SAQ?">
+  <div class="label">Section 1</div>
+  <h2>Which SAQ<br/>do I need?</h2>
+  <p class="lede">
+    The PCI Council publishes nine SAQs. Most merchants only need to
+    consider five. Work through these eight questions in order — the
+    first &ldquo;yes&rdquo; that matches is your starting point.
+  </p>
+</section>
+
+<section style="padding-top: 6mm;">
+  <h2 class="page-h2">8-step decision guide</h2>
+
+  <div class="decision-step">
+    <div class="num">Step 1</div>
+    <div class="q">Do you take any card payments at all?</div>
+    <div class="ya"><strong>Yes →</strong> Continue.</div>
+    <div class="na"><strong>No →</strong> PCI doesn't apply. You can stop here.</div>
+  </div>
+
+  <div class="decision-step">
+    <div class="num">Step 2</div>
+    <div class="q">Are all your card payments handled by a third party that you redirect customers to?</div>
+    <div class="ya"><strong>Yes →</strong> If your e-commerce flow is a redirect or processor-served iframe and you never touch card data, you're a candidate for SAQ A.</div>
+    <div class="na"><strong>No →</strong> Continue — you'll need a more comprehensive SAQ.</div>
+  </div>
+
+  <div class="decision-step">
+    <div class="num">Step 3</div>
+    <div class="q">Do you have your own e-commerce checkout page that loads a third-party payment iframe?</div>
+    <div class="ya"><strong>Yes →</strong> SAQ A-EP. Your server controls the page, so it's in scope even though card data goes straight to the processor.</div>
+    <div class="na"><strong>No →</strong> Continue.</div>
+  </div>
+
+  <div class="decision-step">
+    <div class="num">Step 4</div>
+    <div class="q">Do you take payments only through standalone, dial-out (PSTN) terminals or imprint machines?</div>
+    <div class="ya"><strong>Yes →</strong> SAQ B. No internet, no e-commerce.</div>
+    <div class="na"><strong>No →</strong> Continue.</div>
+  </div>
+
+  <div class="decision-step">
+    <div class="num">Step 5</div>
+    <div class="q">Do you take payments only through standalone IP-connected payment terminals?</div>
+    <div class="ya"><strong>Yes →</strong> SAQ B-IP. Same as B but the terminal is on your IP network.</div>
+    <div class="na"><strong>No →</strong> Continue.</div>
+  </div>
+
+  <div class="decision-step">
+    <div class="num">Step 6</div>
+    <div class="q">Do you take payments through a virtual terminal accessed only via a single, dedicated, isolated computer?</div>
+    <div class="ya"><strong>Yes →</strong> SAQ C-VT.</div>
+    <div class="na"><strong>No →</strong> Continue.</div>
+  </div>
+
+  <div class="decision-step">
+    <div class="num">Step 7</div>
+    <div class="q">Do you have a payment application that's connected to the internet but stored data is segmented out?</div>
+    <div class="ya"><strong>Yes →</strong> SAQ C.</div>
+    <div class="na"><strong>No →</strong> Continue.</div>
+  </div>
+
+  <div class="decision-step">
+    <div class="num">Step 8</div>
+    <div class="q">Do you use a PCI-listed P2PE (point-to-point encryption) solution?</div>
+    <div class="ya"><strong>Yes →</strong> SAQ P2PE — covers merchants using only validated P2PE solutions.</div>
+    <div class="na"><strong>No →</strong> You're on SAQ D — the catch-all. This includes most phone-payment merchants without a descope solution.</div>
+  </div>
+
+  <div class="callout">
+    <p><strong>A note on phone payments.</strong> If your business takes
+    card payments over the phone, the SAQ guide on its own can mislead
+    you. The agent typing a card number into a CRM during a call pulls
+    the entire call recording, the agent's PC, the phone system, and
+    most of the office network into PCI scope. That bumps you to SAQ D
+    regardless of what the rest of your environment looks like. A
+    descope solution like Paytia intercepts the card details before
+    they reach the agent or the recording — typically reducing scope
+    from SAQ D back down to SAQ A.</p>
+  </div>
+</section>
+
+<!-- SAQ A -->
+<section class="section-cover" data-section="SAQ A">
+  <div class="label">Section 2 · ~16 controls</div>
+  <h2>SAQ A</h2>
+  <p class="lede">
+    Card-not-present, fully outsourced. The lightest SAQ — for merchants
+    who never see, store, or transmit card data because a third party
+    handles all of it.
+  </p>
+</section>
+
+<section style="padding-top: 6mm;">
+  <h2 class="page-h2">SAQ A — Checklist</h2>
+  <p>
+    Roughly 16 controls covering policy, third-party management, and
+    physical security of any backup terminals. SAQ A does not cover
+    phone payments where agents type card numbers into a CRM — if
+    that's you, you'll need a descope solution to stay on SAQ A.
+  </p>
+
+  <div class="group-title">Policy &amp; scope</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.1</span><span class="req">Maintain an information security policy</span></div><div class="plain">Write down how your business handles security. One short document, reviewed once a year, signed off by a director. It doesn't need to be 80 pages.</div><div class="ev"><strong>Evidence:</strong> Signed policy document, last-reviewed date</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.4</span><span class="req">Define PCI responsibilities</span></div><div class="plain">Name the person who owns PCI in your business. Could be the finance director, ops manager, whoever. Just one named person, written down.</div><div class="ev"><strong>Evidence:</strong> Org chart or job description naming the role</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.8</span><span class="req">Manage third-party service providers</span></div><div class="plain">List every supplier that touches card data — your payment processor, hosting provider, the iframe vendor. Get their AOC (Attestation of Compliance) once a year.</div><div class="ev"><strong>Evidence:</strong> Supplier list + current AOCs on file</div></div></div>
+
+  <div class="group-title">Outsourcing &amp; iframe controls</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">2.4.a</span><span class="req">Confirm payment is fully outsourced</span></div><div class="plain">Your website redirects customers to your payment processor's page, OR uses an iframe served entirely from the processor. You never see the card number, not even briefly.</div><div class="ev"><strong>Evidence:</strong> Architecture diagram showing redirect/iframe flow</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">9.5</span><span class="req">Protect payment terminals from tampering</span></div><div class="plain">If you have any physical card terminals (e.g. for backup), keep a list of them, check them weekly for tampering, and train staff on what to look for.</div><div class="ev"><strong>Evidence:</strong> Terminal inventory + inspection log</div></div></div>
+
+  <div class="group-title">Incident response</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.10.1</span><span class="req">Have a written incident response plan</span></div><div class="plain">Two pages is fine. Who do you call if you suspect a breach? How do you contact the card brands? Test it once a year with a tabletop exercise.</div><div class="ev"><strong>Evidence:</strong> Plan document + last tabletop exercise notes</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.10.5</span><span class="req">Monitor security alerts from your providers</span></div><div class="plain">If your processor or hosting provider sends a security bulletin, somebody reads it within 24 hours. Set up an inbox alias if you have to.</div><div class="ev"><strong>Evidence:</strong> Email alias / monitoring setup</div></div></div>
+
+  <div class="group-title">Vendor relationships</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.8.2</span><span class="req">Written agreement with each provider</span></div><div class="plain">Your contract with the payment processor and any other PCI-relevant supplier needs to specifically say they're responsible for the security of cardholder data they handle.</div><div class="ev"><strong>Evidence:</strong> Signed contracts referencing PCI responsibilities</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.8.4</span><span class="req">Track supplier compliance status</span></div><div class="plain">Keep a one-row spreadsheet per supplier: name, what they do, their PCI level, when their AOC was last issued, when it expires.</div><div class="ev"><strong>Evidence:</strong> Supplier compliance tracker spreadsheet</div></div></div>
+
+  <div class="group-title">Phone payments (if applicable)</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">phone.1</span><span class="req">Take any payments over the phone?</span></div><div class="plain">If yes — even occasionally — SAQ A doesn't cover it. The agent typing the card number into a CRM brings the entire call into PCI scope. You need a descope solution like Paytia, or you'll need to complete SAQ D instead.</div><div class="ev"><strong>Evidence:</strong> Either no phone payments, or a phone-payment descope solution in place</div></div></div>
+</section>
+
+<!-- SAQ A-EP -->
+<section class="section-cover" data-section="SAQ A-EP">
+  <div class="label">Section 3 · ~70 controls</div>
+  <h2>SAQ A-EP</h2>
+  <p class="lede">
+    E-commerce with iframe/redirect. For online merchants whose own
+    checkout page loads a third-party payment iframe or initiates the
+    redirect — your server is in scope.
+  </p>
+</section>
+
+<section style="padding-top: 6mm;">
+  <h2 class="page-h2">SAQ A-EP — Checklist</h2>
+  <p>
+    Roughly 70 controls. Significantly more than SAQ A because your web
+    infrastructure has to be hardened and monitored.
+  </p>
+
+  <div class="group-title">Scope &amp; eligibility</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">scope.1</span><span class="req">E-commerce only with partial outsourcing</span></div><div class="plain">SAQ A-EP is for online merchants who use a third-party payment page (iframe or redirect) but where your own webpage is what loads the iframe. Your server is in scope because a compromised page could redirect the customer somewhere malicious.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">scope.2</span><span class="req">No card data ever touches your environment</span></div><div class="plain">Your server never sees the PAN. If it does, you're on SAQ D, not A-EP.</div></div></div>
+
+  <div class="group-title">Build and maintain a secure network</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">1.2</span><span class="req">Restrict inbound and outbound traffic</span></div><div class="plain">Firewall rules between your web server and the rest of the world should block everything except what's explicitly allowed. Document each rule with a business reason.</div><div class="ev"><strong>Evidence:</strong> Firewall rule list + last review date</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">1.4</span><span class="req">Personal firewalls on portable computing devices</span></div><div class="plain">Any laptop that connects to your environment from outside the office needs a host firewall (Windows Defender Firewall is fine, just configured properly).</div><div class="ev"><strong>Evidence:</strong> Endpoint config baseline document</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">2.1</span><span class="req">Change vendor-supplied defaults</span></div><div class="plain">Default passwords on routers, admin accounts, database installs — change all of them before going live. The 'admin/admin' router behind your office network counts.</div><div class="ev"><strong>Evidence:</strong> Hardening checklist for each system</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">2.3</span><span class="req">Encrypt non-console admin access</span></div><div class="plain">SSH, RDP, web admin panels — all over TLS or stronger. Telnet is dead.</div></div></div>
+
+  <div class="group-title">Protect cardholder data</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">4.1</span><span class="req">Encrypt cardholder data in transit</span></div><div class="plain">Even though card data shouldn't touch your server, the redirect/iframe must use TLS 1.2 or above. Disable older protocols.</div><div class="ev"><strong>Evidence:</strong> SSL Labs scan showing A or A+</div></div></div>
+
+  <div class="group-title">Vulnerability management</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">5.1</span><span class="req">Anti-malware on all systems</span></div><div class="plain">Every server and workstation that's commonly affected by malware needs anti-malware software, kept up to date.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">6.1</span><span class="req">Process for identifying vulnerabilities</span></div><div class="plain">Subscribe to security mailing lists (US-CERT, your OS vendor, your CMS vendor). Someone reads them weekly.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">6.2</span><span class="req">Patch within one month of release</span></div><div class="plain">Critical security patches go on within a month. Track them in a ticket system so you can show the auditor.</div><div class="ev"><strong>Evidence:</strong> Patch log with dates</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">6.4</span><span class="req">Separate dev/test/prod environments</span></div><div class="plain">Production runs on different infrastructure from staging. Live card data never appears in test environments.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">6.6</span><span class="req">Web application firewall OR code review</span></div><div class="plain">Either run a WAF in front of the web server, or get the code reviewed by someone qualified before each release.</div></div></div>
+
+  <div class="group-title">Access control</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">7.1</span><span class="req">Restrict access to data by job role</span></div><div class="plain">Define which job roles can access which systems. Default to 'no access' and grant explicitly.</div><div class="ev"><strong>Evidence:</strong> Access matrix per role</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">8.2</span><span class="req">Strong authentication for all users</span></div><div class="plain">Passwords meet a minimum length (12+ characters is sensible). MFA for any admin access and any remote access.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">8.3</span><span class="req">Multi-factor authentication for non-console admin</span></div><div class="plain">Anyone administering the environment from outside the office network — MFA is non-negotiable.</div></div></div>
+
+  <div class="group-title">Monitoring &amp; testing</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">10.2</span><span class="req">Audit logs for all in-scope systems</span></div><div class="plain">Log every admin action, every login attempt, every change to user accounts. Keep logs for at least a year, with at least 90 days immediately available.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">11.2</span><span class="req">Quarterly external vulnerability scans</span></div><div class="plain">Use an Approved Scanning Vendor (ASV). Scan your external IPs every three months and after any major change.</div><div class="ev"><strong>Evidence:</strong> ASV scan reports for last 4 quarters</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">11.3</span><span class="req">Annual penetration test</span></div><div class="plain">Once a year, get a CREST or equivalent pen test against your in-scope environment. Plus after any significant change.</div><div class="ev"><strong>Evidence:</strong> Annual pen test report</div></div></div>
+</section>
+
+<!-- SAQ B -->
+<section class="section-cover" data-section="SAQ B">
+  <div class="label">Section 4 · ~40 controls</div>
+  <h2>SAQ B</h2>
+  <p class="lede">
+    Imprint and dial-out terminals. For merchants whose only card
+    payments come through old-school imprint machines or standalone
+    payment terminals that dial out over PSTN.
+  </p>
+</section>
+
+<section style="padding-top: 6mm;">
+  <h2 class="page-h2">SAQ B — Checklist</h2>
+  <p>
+    Roughly 40 controls. Most of the work is physical security and
+    inspecting devices for tampering.
+  </p>
+
+  <div class="group-title">Scope &amp; eligibility</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">scope.1</span><span class="req">Imprint machines or standalone dial-out terminals only</span></div><div class="plain">SAQ B covers merchants with old-school imprint machines (the carbon-copy zip-zap) or standalone payment terminals that dial out via PSTN. No internet-connected terminals. No e-commerce. No phone payments through a soft phone.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">scope.2</span><span class="req">No electronic storage of cardholder data</span></div><div class="plain">If you store imprint slips in a locked cabinet, fine. If you scan them or type them into a computer, you've broken SAQ B scope.</div></div></div>
+
+  <div class="group-title">Physical security of the device</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">9.1</span><span class="req">Restrict physical access to terminals</span></div><div class="plain">Terminals are kept in areas that aren't accessible to the general public — behind the counter, not on the customer side.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">9.5</span><span class="req">Inventory of devices</span></div><div class="plain">List every terminal: make, model, serial number, location. Update when devices are moved, replaced, or retired.</div><div class="ev"><strong>Evidence:</strong> Terminal inventory document</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">9.9</span><span class="req">Inspect terminals for tampering</span></div><div class="plain">Train staff to spot a skimmer or modified terminal. Inspect daily and log it. The log doesn't need to be fancy — a tick-box per terminal per day is enough.</div><div class="ev"><strong>Evidence:</strong> Daily inspection log</div></div></div>
+
+  <div class="group-title">Paper and receipts</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">9.6</span><span class="req">Physical security of paper records</span></div><div class="plain">Imprint slips and merchant copies of receipts go in a locked drawer or safe. Not in a tray on the counter.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">9.8</span><span class="req">Destroy paper records when no longer needed</span></div><div class="plain">Cross-cut shred or pulp anything containing card data when you don't need it any more. A stationery shredder is fine if it's cross-cut.</div><div class="ev"><strong>Evidence:</strong> Destruction log or witnessed-destruction certificate</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">3.2</span><span class="req">Never store the full magnetic stripe, CVV, or PIN</span></div><div class="plain">Even if your old terminal somehow records it, don't keep printed copies. Truncated PAN (last 4 digits) is fine on receipts.</div></div></div>
+
+  <div class="group-title">Policy &amp; people</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.1</span><span class="req">Information security policy</span></div><div class="plain">Same as SAQ A — one document, signed by a director, reviewed annually. For SAQ B it can be very short because the environment is so simple.</div><div class="ev"><strong>Evidence:</strong> Signed policy document</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.6</span><span class="req">Security awareness training</span></div><div class="plain">Every staff member who handles cards gets trained on PCI basics when they start, and a refresh once a year. Keep a sign-off sheet.</div><div class="ev"><strong>Evidence:</strong> Training records</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.10.1</span><span class="req">Incident response plan</span></div><div class="plain">Two pages. Who to call if a terminal looks tampered with. Who to call if you suspect a breach. Test it once a year.</div></div></div>
+</section>
+
+<!-- SAQ D -->
+<section class="section-cover" data-section="SAQ D">
+  <div class="label">Section 5 · 330+ controls (high-impact subset)</div>
+  <h2>SAQ D</h2>
+  <p class="lede">
+    The catch-all SAQ. If your environment doesn't fit any of the
+    narrower questionnaires, you're on SAQ D — including most
+    phone-payment merchants without a descope solution.
+  </p>
+</section>
+
+<section style="padding-top: 6mm;">
+  <h2 class="page-h2">SAQ D — Checklist (high-impact subset)</h2>
+  <p>
+    The full SAQ D covers 330+ controls. This checklist focuses on the
+    high-impact ones that catch most merchants out — the questions a
+    QSA will lean on hardest.
+  </p>
+
+  <div class="callout callout-teal">
+    <p><strong>Phone payments? Read this first.</strong> Most merchants
+    land on SAQ D because they take card payments over the phone and
+    the agent types the number into a CRM — bringing calls, recordings,
+    and the office network into scope. A descope solution like Paytia
+    typically reduces SAQ D scope back to SAQ A — fewer controls, fewer
+    audits, less risk. paytia.com/phone-payments</p>
+  </div>
+
+  <div class="group-title">Scope warning — read first</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">scope.1</span><span class="req">You're on SAQ D because nothing simpler fits</span></div><div class="plain">SAQ D is the catch-all. If you store, process, or transmit cardholder data in a way that doesn't fit A, A-EP, B, B-IP, C-VT, C, or P2PE — you're on D. The scope is your full Cardholder Data Environment plus everything connected to it.</div></div></div>
+
+  <div class="group-title">Network &amp; firewalls (Req 1)</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">1.1.4</span><span class="req">Firewall between any wireless network and the CDE</span></div><div class="plain">If your office WiFi can reach the systems handling card data, you have a problem. Either segment WiFi off entirely or treat it as in-scope (you don't want the latter).</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">1.2.1</span><span class="req">Restrict inbound and outbound traffic to that necessary</span></div><div class="plain">Default deny. Each allow rule needs a documented business justification and an owner.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">1.3.6</span><span class="req">Database servers in an internal network zone, not the DMZ</span></div><div class="plain">Card-data databases are not directly accessible from the internet. Web servers in DMZ talk to DB in internal zone via tightly restricted rules.</div></div></div>
+
+  <div class="group-title">Configuration management (Req 2)</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">2.1</span><span class="req">Change vendor defaults</span></div><div class="plain">Default passwords, default community strings, default service accounts — change all before deploying.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">2.2</span><span class="req">Hardening standards for each system type</span></div><div class="plain">One hardening standard per OS / service type, based on a recognised baseline (CIS, NIST). Every new system built to that standard.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">2.6</span><span class="req">One primary function per server</span></div><div class="plain">Don't run the database, web server, and mail server on the same host. Either separate hosts or strong virtualisation isolation.</div></div></div>
+
+  <div class="group-title">Cardholder data protection (Req 3 + 4)</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">3.2</span><span class="req">Don't store sensitive authentication data after authorisation</span></div><div class="plain">Full magstripe, CVV, PIN — never stored, even encrypted. The moment after authorisation, it's gone.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">3.3</span><span class="req">Mask PAN when displayed</span></div><div class="plain">Show first 6 + last 4 at most, by default. Full PAN visible only to those with a documented business need.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">3.4</span><span class="req">Render stored PAN unreadable</span></div><div class="plain">Strong encryption with proper key management, or one-way hashing, or truncation, or tokenisation. Don't roll your own crypto.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">3.5</span><span class="req">Document and protect cryptographic keys</span></div><div class="plain">Keys are stored in HSMs or equivalently protected. Key custodians have signed responsibility statements.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">4.1</span><span class="req">Encrypt cardholder data in transit over public networks</span></div><div class="plain">TLS 1.2 or above. Disable weak ciphers. Annual SSL Labs scan should be A or A+.</div></div></div>
+
+  <div class="group-title">Vulnerability management (Req 5 + 6)</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">5.1</span><span class="req">Anti-malware on commonly-affected systems</span></div><div class="plain">Endpoint protection on workstations and servers. Updates automatic. Logs sent to central monitoring.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">6.2</span><span class="req">Patch within one month of release</span></div><div class="plain">Critical patches go on within a month. Tracked in a ticketing system with deployment dates.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">6.5</span><span class="req">Address common coding vulnerabilities</span></div><div class="plain">Developers trained in secure coding (OWASP Top 10 minimum). Code reviews check for the common stuff. SAST/DAST tooling helps but isn't sufficient alone.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">6.6</span><span class="req">WAF or code review for public-facing web apps</span></div><div class="plain">Either a WAF in front of every public-facing web app, or every code change reviewed by qualified personnel.</div></div></div>
+
+  <div class="group-title">Access control (Req 7 + 8 + 9)</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">7.1</span><span class="req">Need-to-know access</span></div><div class="plain">Default deny. Access granted by job role. Reviewed at least every 6 months.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">8.3</span><span class="req">Multi-factor authentication for all admin and remote access</span></div><div class="plain">MFA for every admin login. MFA for every remote access into the network. Push notifications or hardware tokens, not SMS.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">8.5.1</span><span class="req">No shared accounts</span></div><div class="plain">Every person has their own login. No 'admin' account that three people use.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">9.1</span><span class="req">Physical access controls to systems</span></div><div class="plain">Server rooms locked. Access logged. Visitors escorted.</div></div></div>
+
+  <div class="group-title">Logging &amp; monitoring (Req 10)</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">10.2</span><span class="req">Log security-relevant events on every in-scope system</span></div><div class="plain">Logins, admin actions, access to cardholder data, changes to user accounts, system clock changes, log access, all critical errors.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">10.5.5</span><span class="req">File integrity monitoring on critical files</span></div><div class="plain">FIM on system binaries, configuration files, and audit logs themselves. Alerts on unauthorised change.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">10.6</span><span class="req">Daily log review for security events</span></div><div class="plain">Either a SIEM with alerting or a person who genuinely reviews the daily summary. Document who did the review and what they found.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">10.7</span><span class="req">Retain audit logs for at least one year</span></div><div class="plain">Three months immediately available, the rest in colder storage.</div></div></div>
+
+  <div class="group-title">Testing &amp; pen testing (Req 11)</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">11.2</span><span class="req">Quarterly external ASV scans</span></div><div class="plain">Approved Scanning Vendor scans every quarter and after significant change. Address findings.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">11.2.1</span><span class="req">Quarterly internal vulnerability scans</span></div><div class="plain">Internal scans by qualified personnel. Same cadence as external.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">11.3</span><span class="req">Annual external + internal pen tests</span></div><div class="plain">Full pen test once a year and after significant change. Methodology documented. Findings tracked to closure.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">11.5</span><span class="req">Change-detection mechanism</span></div><div class="plain">Detect unauthorised modification of system files, config files, content files. Alert on change. Investigate.</div></div></div>
+
+  <div class="group-title">Policy &amp; programme (Req 12)</div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.1</span><span class="req">Maintain an information security policy</span></div><div class="plain">Comprehensive policy covering all 12 PCI requirements. Reviewed annually. Distributed to staff.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.3</span><span class="req">Acceptable use policies for technologies</span></div><div class="plain">Policies for laptops, tablets, removable media, internet, email — covering authorised use, owners, accepted use, network locations.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.6</span><span class="req">Security awareness programme</span></div><div class="plain">Training at hire and annually. Multiple methods (email, posters, training modules). Sign-off after each training.</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.8</span><span class="req">Manage service providers</span></div><div class="plain">List all third parties with access to cardholder data. Written agreements. Annual AOC review. Document who's responsible for what (you vs them).</div></div></div>
+  <div class="control"><div class="checkbox"></div><div class="body"><div class="id-row"><span class="ctl-id">12.10</span><span class="req">Incident response plan</span></div><div class="plain">Documented, tested annually, includes notification of card brands and acquirer, roles assigned, communication procedures.</div></div></div>
+</section>
+
+<!-- GLOSSARY -->
+<section class="section-cover" data-section="Glossary">
+  <div class="label">Section 6 · 15 terms</div>
+  <h2>PCI Glossary</h2>
+  <p class="lede">
+    The terms you'll see most often when you're working through a SAQ —
+    in plain English.
+  </p>
+</section>
+
+<section style="padding-top: 6mm;">
+  <h2 class="page-h2">Glossary</h2>
+
+  <div class="term"><div><span class="name">PAN</span><span class="aka">Primary Account Number</span></div><div class="def">The 16-digit (or sometimes 13–19) card number printed on the front of a payment card. The single most regulated piece of data in PCI DSS.</div></div>
+  <div class="term"><div><span class="name">CHD</span><span class="aka">Cardholder Data</span></div><div class="def">PAN, plus optionally cardholder name, expiry date, and service code. Storing or transmitting any of these brings you into scope.</div></div>
+  <div class="term"><div><span class="name">SAD</span><span class="aka">Sensitive Authentication Data</span></div><div class="def">Full magstripe contents, CVV/CVC2, and PIN block. PCI DSS forbids storing SAD after authorisation, even if encrypted.</div></div>
+  <div class="term"><div><span class="name">CVV / CVC2 / CID</span></div><div class="def">The 3- or 4-digit security number printed on the card (not encoded in the magstripe). Used to verify card-not-present transactions. Never stored after authorisation.</div></div>
+  <div class="term"><div><span class="name">CDE</span><span class="aka">Cardholder Data Environment</span></div><div class="def">Every system, network, person, and process that stores, processes, or transmits cardholder data — plus everything connected to it. The smaller you keep your CDE, the less PCI work you have.</div></div>
+  <div class="term"><div><span class="name">Descope</span></div><div class="def">Architectural changes that remove cardholder data from a system or process so it falls outside PCI scope. Phone-payment descope solutions intercept card details before they reach the agent or call recording.</div></div>
+  <div class="term"><div><span class="name">SAQ</span><span class="aka">Self-Assessment Questionnaire</span></div><div class="def">The form a merchant completes annually to attest PCI compliance. Nine variants (A, A-EP, B, B-IP, C-VT, C, P2PE, D-Merchant, D-Service Provider) covering different environments.</div></div>
+  <div class="term"><div><span class="name">AOC</span><span class="aka">Attestation of Compliance</span></div><div class="def">A signed declaration that an entity (merchant or service provider) has completed its PCI assessment and meets requirements. You collect AOCs from your service providers annually.</div></div>
+  <div class="term"><div><span class="name">ASV</span><span class="aka">Approved Scanning Vendor</span></div><div class="def">A PCI-Council-approved third party that runs quarterly external vulnerability scans against your internet-facing systems.</div></div>
+  <div class="term"><div><span class="name">QSA</span><span class="aka">Qualified Security Assessor</span></div><div class="def">An individual or firm certified by the PCI Council to conduct on-site PCI DSS assessments. Required for Level 1 merchants; optional but useful for smaller ones.</div></div>
+  <div class="term"><div><span class="name">ROC</span><span class="aka">Report on Compliance</span></div><div class="def">The full assessment report a QSA produces for Level 1 merchants. Replaces the SAQ for those merchants.</div></div>
+  <div class="term"><div><span class="name">P2PE</span><span class="aka">Point-to-Point Encryption</span></div><div class="def">A PCI-validated approach where card data is encrypted at the point of capture (e.g. inside a payment terminal) and only decrypted by the processor. Massively reduces merchant scope.</div></div>
+  <div class="term"><div><span class="name">Tokenisation</span></div><div class="def">Replacing the PAN with a non-sensitive equivalent (a token) that has no exploitable value. Lets merchants reference customer cards (e.g. for refunds) without storing the PAN.</div></div>
+  <div class="term"><div><span class="name">DTMF masking</span></div><div class="def">Phone-payment technique where the customer types card details on their handset keypad and the DTMF tones are intercepted, captured by a PCI-compliant payment system, and replaced with masked tones in the call recording. The agent never hears or sees the card data.</div></div>
+  <div class="term"><div><span class="name">Acquirer</span></div><div class="def">The bank or financial institution that processes card payments on a merchant's behalf and ultimately decides whether the merchant is PCI-compliant.</div></div>
+</section>
+
+<!-- ABOUT / CTA -->
+<section class="cta-block">
+  <div style="margin-top: 30mm;">
+    <div style="font-size: 9pt; color: #22d3ee; text-transform: uppercase; letter-spacing: 3px; font-weight: 700;">About Paytia</div>
+    <h2>Phone payments that <span class="accent">stay out of scope.</span></h2>
+    <p>
+      We're Paytia. We build PCI-compliant secure phone payment systems
+      for call centres, contact centres, and merchants who take card
+      payments over the phone.
+    </p>
+    <p>
+      We open-sourced this checklist because most PCI guidance is
+      written for QSAs, not the people actually trying to get
+      compliant. If it helped you scope your assessment, we've done
+      our job.
+    </p>
+    <p style="margin-top: 8mm;">
+      <strong style="color: #fff;">If you take card payments over
+      the phone</strong>, the agent typing the number into a CRM brings
+      the whole call into PCI scope. Paytia removes the cardholder
+      data from the agent and the recording entirely — typically
+      reducing scope from SAQ D back to SAQ A.
+    </p>
+    <span class="url-pill">paytia.com/phone-payments</span>
+    <span class="secondary">
+      Interactive checklist · paytia-comply.github.io/paytia-saq-checklist<br/>
+      Open source on GitHub · github.com/paytia-comply/paytia-saq-checklist
+    </span>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Cover-image exports are derived from the PDF and shouldn't bloat the repo.
+# The PDF itself IS committed (it's the deliverable), but cover-hi PNGs are
+# regenerated on demand.
+cover-hi-*.png
