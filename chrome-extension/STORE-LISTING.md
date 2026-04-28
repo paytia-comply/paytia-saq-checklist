@@ -29,7 +29,7 @@ This extension is a pocket reference that lives in your browser toolbar. Click t
 
 Everything works offline. There's no tracking, no analytics, no account, no permissions beyond what's needed to render the popup.
 
-Built and maintained by Paytia (https://www.paytia.com/phone-payments), a UK provider of PCI-compliant secure phone payment solutions for call centres and merchants. The full open-source workbook (web + printable PDF) is at https://paytia-comply.github.io/paytia-saq-checklist/
+Built and maintained by Paytia (https://www.paytia.com/solutions/telephone-payments), a UK provider of PCI-compliant secure phone payment solutions for call centres and merchants. The full open-source workbook (web + printable PDF) is at https://paytia-comply.github.io/paytia-saq-checklist/
 
 Free, MIT-licensed. Source code: https://github.com/paytia-comply/paytia-saq-checklist
 ```

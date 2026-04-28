@@ -34,7 +34,7 @@ export default function SaqDPage() {
           calls, recordings, and the office network into scope. A descope
           solution like{" "}
           <a
-            href="https://www.paytia.com/phone-payments"
+            href="https://www.paytia.com/solutions/telephone-payments"
             target="_blank"
             rel="noopener"
             className="font-semibold text-teal-dark underline"

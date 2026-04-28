@@ -147,7 +147,7 @@ export default function HomePage() {
               typing the card number into a CRM brings the whole call into
               PCI scope. There&apos;s a way to remove that risk entirely —{" "}
               <a
-                href="https://www.paytia.com/phone-payments"
+                href="https://www.paytia.com/solutions/telephone-payments"
                 target="_blank"
                 rel="noopener"
               >

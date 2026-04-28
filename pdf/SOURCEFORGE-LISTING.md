@@ -58,7 +58,7 @@ The official SAQ documents are written for QSAs and security professionals. If y
 
 This project is maintained by Paytia (https://www.paytia.com) — a UK-based provider of PCI-compliant secure phone payment solutions for call centres and merchants. We see businesses get the SAQ wrong all the time, usually because the official guidance doesn't make it clear which SAQ fits their setup. We open-sourced these checklists because most PCI guidance is written for QSAs, not the people actually trying to get compliant.
 
-If you take card payments over the phone, the agent typing the card number into a CRM during the call brings the entire call recording, the agent's PC, the phone system, and most of the office network into PCI scope. There's a way to remove that risk entirely — see https://www.paytia.com/phone-payments
+If you take card payments over the phone, the agent typing the card number into a CRM during the call brings the entire call recording, the agent's PC, the phone system, and most of the office network into PCI scope. There's a way to remove that risk entirely — see https://www.paytia.com/solutions/telephone-payments
 
 ## Licence
 
@@ -103,7 +103,7 @@ This goes in the "External Homepage" field. Some merchants would point this dire
 2. The GH Pages site already links to paytia.com/phone-payments in its hero, footer, and CTAs — so users still funnel to Paytia
 3. We get a direct sourceforge.net → github.io DR-stacking effect
 
-If SourceForge has a separate "Vendor / Sponsor URL" or "Funding URL" field, **put `https://www.paytia.com/phone-payments` there** as a second backlink.
+If SourceForge has a separate "Vendor / Sponsor URL" or "Funding URL" field, **put `https://www.paytia.com/solutions/telephone-payments` there** as a second backlink.
 
 ---
 

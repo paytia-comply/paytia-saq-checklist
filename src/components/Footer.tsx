@@ -62,7 +62,7 @@ export function Footer() {
             </p>
             <p className="mt-3 text-sm">
               <a
-                href="https://www.paytia.com/phone-payments"
+                href="https://www.paytia.com/solutions/telephone-payments"
                 target="_blank"
                 rel="noopener"
                 className="text-teal-light hover:text-white"

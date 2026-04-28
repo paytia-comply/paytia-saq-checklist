@@ -32,7 +32,7 @@ export function Nav() {
           ))}
           <li>
             <a
-              href="https://www.paytia.com/phone-payments"
+              href="https://www.paytia.com/solutions/telephone-payments"
               target="_blank"
               rel="noopener"
               className="rounded-full bg-teal px-4 py-2 text-sm font-semibold text-navy transition hover:bg-teal-light"
@@ -43,7 +43,7 @@ export function Nav() {
         </ul>
         <div className="lg:hidden">
           <a
-            href="https://www.paytia.com/phone-payments"
+            href="https://www.paytia.com/solutions/telephone-payments"
             target="_blank"
             rel="noopener"
             className="rounded-full bg-teal px-3 py-1.5 text-xs font-semibold text-navy"

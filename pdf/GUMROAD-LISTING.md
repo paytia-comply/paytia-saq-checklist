@@ -51,7 +51,7 @@ This isn't a substitute for a Qualified Security Assessor — your QSA still has
 
 We're [Paytia](https://www.paytia.com). We build PCI-compliant phone payment systems for merchants and call centres. We see businesses get the SAQ wrong all the time — usually because the official guidance doesn't make it clear which one fits their setup. We open-sourced the checklists because most PCI guidance is written for QSAs, not the people actually trying to get compliant.
 
-If you take card payments over the phone, the agent typing the card number into a CRM during the call brings the entire call recording, the agent's PC, the phone system, and most of the office network into PCI scope. There's a way to remove that risk entirely — see [paytia.com/phone-payments](https://www.paytia.com/phone-payments).
+If you take card payments over the phone, the agent typing the card number into a CRM during the call brings the entire call recording, the agent's PC, the phone system, and most of the office network into PCI scope. There's a way to remove that risk entirely — see [paytia.com/phone-payments](https://www.paytia.com/solutions/telephone-payments).
 
 ### Also available
 

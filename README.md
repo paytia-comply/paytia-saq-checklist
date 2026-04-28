@@ -25,7 +25,7 @@ It's a starting point for your own assessment, not a substitute for one — your
 
 We're [Paytia](https://www.paytia.com). We build PCI-compliant phone payment systems for merchants and call centres who take card payments over the phone. We see businesses get the SAQ wrong all the time — usually because the official guidance doesn't make it clear which one fits their setup.
 
-Phone payments in particular are a trap: the moment an agent types a card number into a CRM during a call, the entire call recording, the agent's PC, and most of the office network falls into PCI scope. There's a way to remove that risk entirely — see [paytia.com/phone-payments](https://www.paytia.com/phone-payments).
+Phone payments in particular are a trap: the moment an agent types a card number into a CRM during a call, the entire call recording, the agent's PC, and most of the office network falls into PCI scope. There's a way to remove that risk entirely — see [paytia.com/solutions/telephone-payments](https://www.paytia.com/solutions/telephone-payments).
 
 ## Local development
 

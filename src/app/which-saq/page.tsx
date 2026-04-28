@@ -121,7 +121,7 @@ export default function WhichSaqPage() {
         <p className="mt-3 text-slate-700">
           A descope solution like{" "}
           <a
-            href="https://www.paytia.com/phone-payments"
+            href="https://www.paytia.com/solutions/telephone-payments"
             target="_blank"
             rel="noopener"
             className="font-semibold text-teal-dark underline"

@@ -30,7 +30,7 @@ export default function SaqAPage() {
           cover phone payments where agents type card numbers into a CRM. If
           that&apos;s you,{" "}
           <a
-            href="https://www.paytia.com/phone-payments"
+            href="https://www.paytia.com/solutions/telephone-payments"
             target="_blank"
             rel="noopener"
             className="font-semibold text-teal-dark underline"
