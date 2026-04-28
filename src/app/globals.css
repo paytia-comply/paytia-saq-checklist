@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Primary Navy */
+  --color-navy: #0a1628;
+  --color-navy-mid: #111d33;
+  --color-navy-light: #1a2942;
+
+  /* Teal Accent */
+  --color-teal: #06b6d4;
+  --color-teal-light: #22d3ee;
+  --color-teal-dark: #0e7490;
+
+  /* Neutrals */
+  --color-off-white: #f0f4f8;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-900: #0f172a;
+
+  /* Status */
+  --color-green: #059669;
+  --color-amber: #d97706;
+  --color-red: #dc2626;
+
+  --font-display: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: #334155;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-navy);
+  letter-spacing: -0.02em;
+}
+
+/* Glass nav */
+.glass-nav {
+  background: rgba(10, 22, 40, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Print styles for the checklist */
+@media print {
+  .no-print { display: none !important; }
+  body { color: #000; }
+  .checklist-item { break-inside: avoid; }
+}
