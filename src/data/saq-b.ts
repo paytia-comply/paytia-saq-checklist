@@ -3,7 +3,7 @@ import type { ChecklistSection } from "@/components/Checklist";
 export const saqB: ChecklistSection[] = [
   {
     id: "scope",
-    title: "Scope &amp; eligibility",
+    title: "Scope & eligibility",
     controls: [
       {
         id: "scope.1",
@@ -72,7 +72,7 @@ export const saqB: ChecklistSection[] = [
   },
   {
     id: "policy",
-    title: "Policy &amp; people",
+    title: "Policy & people",
     controls: [
       {
         id: "12.1",

@@ -24,7 +24,7 @@ export const saqD: ChecklistSection[] = [
   },
   {
     id: "network",
-    title: "Network &amp; firewalls (Req 1)",
+    title: "Network & firewalls (Req 1)",
     controls: [
       {
         id: "1.1.4",
@@ -168,7 +168,7 @@ export const saqD: ChecklistSection[] = [
   },
   {
     id: "logging",
-    title: "Logging &amp; monitoring (Req 10)",
+    title: "Logging & monitoring (Req 10)",
     controls: [
       {
         id: "10.2",
@@ -198,7 +198,7 @@ export const saqD: ChecklistSection[] = [
   },
   {
     id: "testing",
-    title: "Testing &amp; pen testing (Req 11)",
+    title: "Testing & pen testing (Req 11)",
     controls: [
       {
         id: "11.2",
@@ -228,7 +228,7 @@ export const saqD: ChecklistSection[] = [
   },
   {
     id: "policy-d",
-    title: "Policy &amp; programme (Req 12)",
+    title: "Policy & programme (Req 12)",
     controls: [
       {
         id: "12.1",
